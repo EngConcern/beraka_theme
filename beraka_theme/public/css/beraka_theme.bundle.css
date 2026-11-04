@@ -75,7 +75,7 @@ a, .text-primary { color: var(--brand-500); }
 /* =====================================================================
    Beraka shell: Havano-style module menu + top bar (driven by beraka_theme.js)
    ===================================================================== */
-:root { --bk-topbar-h: 56px; --navbar-height: 56px; --sidebar-width: 250px; }
+:root { --bk-topbar-h: 56px; --sidebar-width: 250px; }
 
 /* dock rail gone; native search/notification band and footer user block hidden */
 #desk-dock, .dock, .standard-items-band, .body-sidebar-bottom .dropdown-navbar-user,
@@ -107,7 +107,7 @@ a, .text-primary { color: var(--brand-500); }
 /* push desk content and sidebar below the top bar */
 body.bk-shell .body-sidebar-container { top: var(--bk-topbar-h); height: calc(100vh - var(--bk-topbar-h)); }
 body.bk-shell .body-sidebar { padding-top: 6px; }
-body.bk-shell .sticky-top, body.bk-shell .page-head { top: var(--bk-topbar-h); }
+
 body.bk-shell .navbar:not(.bk-topbar) { display: none !important; }
 
 /* sidebar header shows just the module name, no app switcher */
@@ -270,7 +270,7 @@ html[data-theme], html[data-theme="light"], html[data-theme="dark"], :root, body
 
 /* form tab strip: keep it below the page title bar, never under it */
 .form-tabs-list {
-  position: sticky; top: calc(var(--bk-topbar-h) + var(--page-head-height, 52px)) !important; z-index: 5 !important;
+  position: sticky; top: var(--page-head-height, 48px) !important; z-index: 5 !important;
   background: var(--brand-gradient) !important; margin: 0 0 8px; border-radius: 0 0 10px 10px; display: block !important;
 }
 .form-tabs-list .form-tabs { border-bottom: 0 !important; }
@@ -332,3 +332,13 @@ html[data-theme], html[data-theme="light"], html[data-theme="dark"], :root, body
 .page-form.flex { background: #ffffff; border-bottom: 1px solid #e3edf4; padding: 10px 15px; }
 .page-form .frappe-control .form-control { height: 34px; }
 .report-wrapper { padding-top: 8px; }
+
+/* =====================================================================
+   Layout under the top bar (Frappe v16: .main-section is its own 100vh scroll box; .page-head is sticky at top:0)
+   The scroll box is shortened and pushed below the top bar, so nothing scrolls under it and the sticky
+   header never covers the first row of a page.
+   ===================================================================== */
+body.bk-shell .main-section { height: calc(100vh - var(--bk-topbar-h)) !important; height: calc(100dvh - var(--bk-topbar-h)) !important; margin-top: var(--bk-topbar-h); }
+body.bk-shell .page-head { top: 0 !important; background: #ffffff; box-shadow: 0 1px 0 #e3edf4; }
+body.bk-shell .sticky-top { top: 0; }
+body.bk-shell .layout-side-section { top: var(--page-head-height, 48px); height: calc(100vh - var(--bk-topbar-h) - var(--page-head-height, 48px)); }
