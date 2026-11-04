@@ -279,3 +279,56 @@ html[data-theme], html[data-theme="light"], html[data-theme="dark"], :root, body
 
 /* table headers inside HTML/markdown fields and dashboards */
 .form-page table thead th, .frappe-card table thead th, .table thead th { background: #1479b3 !important; color: #fff !important; border-color: #1479b3 !important; }
+
+/* =====================================================================
+   Formal, uniform headers: form tabs, list header, report header. Same 40px height everywhere.
+   ===================================================================== */
+:root { --bk-head-h: 40px; }
+
+/* form tab strip: plain white bar, navy labels, blue underline on the active tab */
+.form-tabs-list, .form-tabs-list .form-tabs {
+  background: #ffffff !important; background-image: none !important; border-radius: 0 !important; margin: 0 !important; padding: 0 12px !important;
+  border-bottom: 1px solid #d5e3ee !important; height: var(--bk-head-h); min-height: var(--bk-head-h);
+}
+.form-tabs-list .form-tabs { padding: 0 !important; display: flex; align-items: stretch; }
+.form-tabs-list .form-tabs .nav-item { background: transparent !important; margin: 0 !important; }
+.form-tabs-list .form-tabs .nav-item .nav-link, .form-tabs-list .form-tabs .nav-item .nav-link.active {
+  background: transparent !important; color: #0b4b73 !important; font-weight: 600; font-size: 13px; margin: 0 !important; padding: 0 16px !important;
+  height: var(--bk-head-h); line-height: var(--bk-head-h); border: 0 !important; border-bottom: 3px solid transparent !important; border-radius: 0 !important;
+}
+.form-tabs-list .form-tabs .nav-item .nav-link:hover { color: #1479b3 !important; background: #f4f8fb !important; }
+.form-tabs-list .form-tabs .nav-item .nav-link.active { color: #1479b3 !important; border-bottom-color: #1479b3 !important; }
+
+/* list view header: one blue bar, every child transparent and white, including the "20 of 22" count */
+.list-row-head { height: var(--bk-head-h); min-height: var(--bk-head-h); padding: 0 15px !important; display: flex; align-items: center; border-radius: 0 !important; }
+.list-row-head .level, .list-row-head .level-left, .list-row-head .level-right, .list-row-head .list-row-col, .list-row-head .list-count,
+.list-row-head .list-header-subject, .list-row-head .list-row-col *, .list-row-head .level-right *, .list-row-head .checkbox-actions, .list-row-head .list-actions {
+  background: transparent !important; background-color: transparent !important; color: #ffffff !important; box-shadow: none !important; border: 0 !important;
+}
+.list-row-head .level { width: 100%; min-height: var(--bk-head-h); }
+.list-row-head .list-count { font-weight: 600; opacity: 1; }
+.list-row-head .btn, .list-row-head .btn-default { background: rgba(255, 255, 255, .18) !important; color: #fff !important; }
+
+/* child-table grid header: same height, text vertically centred */
+.form-grid .grid-heading-row .grid-row { min-height: var(--bk-head-h); }
+.form-grid .grid-heading-row .grid-row .data-row { min-height: var(--bk-head-h); align-items: center; }
+.form-grid .grid-heading-row .grid-static-col, .form-grid .grid-heading-row .row-index { line-height: var(--bk-head-h); padding-top: 0 !important; padding-bottom: 0 !important; }
+
+/* report view and query report (datatable): blue title row only; filter row and body stay neutral */
+.datatable .dt-header .dt-row-header, .datatable .dt-header .dt-row-header .dt-cell, .datatable .dt-header .dt-row-header .dt-cell--header,
+.datatable .dt-header .dt-row-header .dt-cell__content { background: #1479b3 !important; color: #ffffff !important; }
+.datatable .dt-header .dt-row-header .dt-cell { height: var(--bk-head-h) !important; }
+.datatable .dt-header .dt-row-header .dt-cell__content { height: var(--bk-head-h) !important; line-height: var(--bk-head-h) !important; padding-top: 0 !important; padding-bottom: 0 !important; font-weight: 600; }
+.datatable .dt-header .dt-row-filter, .datatable .dt-header .dt-row-filter .dt-cell, .datatable .dt-header .dt-row-filter .dt-cell__content,
+.datatable .dt-row-filter .dt-cell--header { background: #f4f8fb !important; color: #0b2a40 !important; }
+.datatable .dt-row-filter .dt-filter { background: #ffffff !important; border: 1px solid #d5e3ee !important; border-radius: 4px; color: #0b2a40 !important; height: 26px; }
+.datatable .dt-header { border-bottom: 1px solid #d5e3ee; }
+.datatable .dt-cell { font-size: 13px; }
+.datatable .dt-scrollable .dt-row .dt-cell { height: 36px; }
+.datatable .dt-row-totals .dt-cell, .datatable .dt-row-totals .dt-cell__content { background: #eef4f9 !important; font-weight: 700; }
+.datatable .dt-cell--header .dt-dropdown__toggle { color: #fff; }
+
+/* report page: filters in a tidy band, consistent control heights */
+.page-form.flex { background: #ffffff; border-bottom: 1px solid #e3edf4; padding: 10px 15px; }
+.page-form .frappe-control .form-control { height: 34px; }
+.report-wrapper { padding-top: 8px; }
