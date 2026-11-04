@@ -1,0 +1,10 @@
+[project]
+name = "beraka_theme"
+version = "0.1.0"
+description = "Beraka Soft desk theme for ERPNext v16"
+requires-python = ">=3.10"
+dependencies = []
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
