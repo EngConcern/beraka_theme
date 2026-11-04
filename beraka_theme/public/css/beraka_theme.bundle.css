@@ -155,3 +155,76 @@ body.bk-shell .sidebar-header .header-title { color: #fff; font-weight: 700; let
 .bk-link.active { background: #fff; color: var(--brand-900) !important; font-weight: 600; }
 .bk-link-icon svg { width: 13px; height: 13px; stroke: currentColor; }
 .bk-home { margin-left: 4px; }
+
+/* =====================================================================
+   Forms (Sales Invoice, Purchase Invoice, every DocType form)
+   ===================================================================== */
+:root { --control-bg: #fff; --control-bg-on-gray: #fff; --disabled-control-bg: #f1f6fa; }
+.form-layout { max-width: 1320px; margin: 0 auto; }
+.form-page .page-form, .form-layout .form-page { background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(11, 75, 115, .08); }
+.page-head .page-title .title-text { font-weight: 700; }
+
+/* tab bar: gradient strip with the active tab lit */
+.form-tabs-list { background: var(--brand-gradient) !important; border-radius: 10px 10px 0 0; padding: 0 8px; border-bottom: 0 !important; }
+.form-tabs-list .form-tabs .nav-item .nav-link { color: rgba(255, 255, 255, .85) !important; font-weight: 600; padding: 12px 16px; border: 0 !important; }
+.form-tabs-list .form-tabs .nav-item .nav-link:hover { color: #fff !important; background: rgba(255, 255, 255, .12); }
+.form-tabs-list .form-tabs .nav-item .nav-link.active { color: var(--brand-900) !important; background: #fff; border-radius: 8px 8px 0 0; margin-top: 4px; }
+
+/* inputs: white with a soft border, blue focus */
+.frappe-control .form-control, .frappe-control .control-input .form-control, .like-disabled-input, .ql-container {
+  background: #fff !important; border: 1px solid #d5e3ee !important; border-radius: 8px !important;
+}
+.frappe-control .form-control:focus { border-color: var(--brand-500) !important; box-shadow: 0 0 0 3px rgba(42, 154, 214, .18) !important; }
+.frappe-control .control-label { color: #345; font-weight: 500; }
+.form-section.card-section, .form-dashboard-section { border-radius: 0; box-shadow: none; border-left: 0; border-right: 0; }
+.form-section .section-head { color: var(--brand-900); font-weight: 700; }
+.form-section.card-section:not(:last-child) { border-bottom: 1px solid #e3edf4; }
+
+/* child tables: gradient header, zebra rows */
+.form-grid { border: 1px solid #d5e3ee; border-radius: 10px; overflow: hidden; }
+.form-grid .grid-heading-row { background: var(--brand-gradient) !important; color: #fff !important; }
+.form-grid .grid-heading-row .grid-static-col, .form-grid .grid-heading-row .static-area, .form-grid .grid-heading-row .col-xs-1, .form-grid .grid-heading-row span { color: #fff !important; }
+.form-grid .grid-heading-row svg { stroke: #fff; }
+.form-grid .grid-body .rows .grid-row:nth-child(even) { background: #f4f8fb; }
+.form-grid .grid-body .rows .grid-row:hover { background: #e6f2fa; }
+.grid-footer .btn, .grid-footer .grid-add-row, .grid-footer .grid-add-multiple-rows, .grid-footer .grid-download, .grid-footer .grid-upload {
+  background: var(--brand-500) !important; color: #fff !important; border-color: var(--brand-500) !important; border-radius: 8px;
+}
+
+/* list view: blue header */
+.list-row-head { background: var(--brand-100) !important; border-bottom: 2px solid var(--brand-500) !important; }
+.list-row-head .list-row-col, .list-row-head .level-item { color: var(--brand-900) !important; font-weight: 600; }
+.list-row-container { border-radius: 8px; margin-bottom: 4px; }
+.list-row:hover { background: #f4f8fb; }
+.list-paging-area .btn-group .btn.btn-sm { background: #fff !important; color: var(--brand-700) !important; }
+.list-paging-area .btn-group .btn.btn-sm.btn-info { background: var(--brand-700) !important; color: #fff !important; }
+
+/* indicator pills and status */
+.indicator-pill.green, .indicator-pill.blue, .indicator-pill.cyan { background: var(--brand-100); color: var(--brand-900); }
+
+/* =====================================================================
+   Point of Sale (the POS page)
+   ===================================================================== */
+.point-of-sale-app { background: #f4f8fb; gap: 14px; }
+.point-of-sale-app > section { background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(11, 75, 115, .08); }
+.point-of-sale-app .items-selector .filter-section { background: var(--brand-gradient); border-radius: 14px 14px 0 0; padding: 14px; }
+.point-of-sale-app .items-selector .filter-section .label { color: #fff; font-weight: 700; }
+.point-of-sale-app .items-selector .filter-section .search-field .form-control,
+.point-of-sale-app .items-selector .filter-section .item-group-field .form-control { background: rgba(255, 255, 255, .95) !important; border: 0 !important; }
+.point-of-sale-app .items-selector .items-container .item-wrapper { border: 1px solid #d5e3ee; border-radius: 12px; transition: transform .1s, box-shadow .1s; }
+.point-of-sale-app .items-selector .items-container .item-wrapper:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(11, 75, 115, .16); border-color: var(--brand-500); }
+.point-of-sale-app .items-selector .items-container .item-wrapper .item-display { border-radius: 12px 12px 0 0; background: #e6f2fa; color: var(--brand-900); font-weight: 700; }
+.point-of-sale-app .items-selector .items-container .item-wrapper .item-detail .item-rate { color: var(--brand-700); font-weight: 700; }
+.point-of-sale-app .customer-cart-container .customer-section { background: var(--brand-100); border-radius: 14px 14px 0 0; }
+.point-of-sale-app .cart-container .cart-items-section .cart-item-wrapper:hover { background: #f4f8fb; }
+.point-of-sale-app .cart-container .cart-totals-section { border-top: 2px solid var(--brand-500); }
+.point-of-sale-app .cart-container .cart-totals-section .grand-total { color: var(--brand-900); font-weight: 800; }
+.point-of-sale-app .cart-container .cart-totals-section .checkout-btn,
+.point-of-sale-app .payment-container .submit-order-btn, .point-of-sale-app .past-order-summary .summary-btns .btn, .point-of-sale-app .cart-container .cart-totals-section .edit-cart-btn {
+  background: var(--brand-gradient) !important; color: #fff !important; border-radius: 10px; font-weight: 700; border: 0;
+}
+.point-of-sale-app .payment-container .payment-modes .payment-mode-wrapper .mode-of-payment { border: 1px solid #d5e3ee; border-radius: 10px; }
+.point-of-sale-app .payment-container .payment-modes .payment-mode-wrapper .mode-of-payment.border-primary { border-color: var(--brand-500); background: var(--brand-100); }
+.point-of-sale-app .payment-container .number-pad .numpad-btn { border-radius: 10px; border: 1px solid #d5e3ee; background: #fff; }
+.point-of-sale-app .payment-container .number-pad .numpad-btn:hover { background: var(--brand-100); }
+.point-of-sale-app .item-details-container { border-left: 4px solid var(--brand-500); }
