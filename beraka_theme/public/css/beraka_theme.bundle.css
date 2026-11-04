@@ -228,3 +228,54 @@ body.bk-shell .sidebar-header .header-title { color: #fff; font-weight: 700; let
 .point-of-sale-app .payment-container .number-pad .numpad-btn { border-radius: 10px; border: 1px solid #d5e3ee; background: #fff; }
 .point-of-sale-app .payment-container .number-pad .numpad-btn:hover { background: var(--brand-100); }
 .point-of-sale-app .item-details-container { border-left: 4px solid var(--brand-500); }
+
+/* =====================================================================
+   Overrides with higher priority (Frappe v16 sets its colours on html[data-theme])
+   ===================================================================== */
+html[data-theme], html[data-theme="light"], html[data-theme="dark"], :root, body {
+  --primary: #1479b3; --primary-color: #1479b3; --btn-primary: #1479b3; --btn-primary-color: #fff;
+  --primary-hover: #0b4b73; --control-bg: #fff; --control-bg-on-gray: #fff;
+}
+
+/* primary buttons (Save, Add X, Submit, Create) */
+.btn.btn-primary, .btn-primary, .page-actions .btn-primary, .page-actions .btn.btn-primary.btn-sm,
+.btn-primary:not(:disabled):not(.disabled), .modal .btn-primary, .btn-primary:focus, .btn-primary:active {
+  background: var(--brand-gradient) !important; background-color: #1479b3 !important; background-image: var(--brand-gradient) !important;
+  border-color: #1479b3 !important; color: #fff !important; box-shadow: none !important;
+}
+.btn.btn-primary:hover { filter: brightness(1.1); }
+.btn-primary svg, .btn-primary .icon, .btn-primary use { stroke: #fff !important; fill: none; }
+.btn-primary-light, .btn-primary-light:hover { background: var(--brand-100) !important; color: var(--brand-900) !important; }
+
+/* grid (child table) header: solid button blue */
+.form-grid .grid-heading-row, .form-grid .grid-heading-row .grid-row, .form-grid .grid-heading-row .grid-row .data-row,
+.form-grid .grid-heading-row .row-index, .form-grid .grid-heading-row .grid-static-col, .form-grid .grid-heading-row .col {
+  background: #1479b3 !important; background-color: #1479b3 !important; color: #fff !important; border-color: #1479b3 !important;
+}
+.form-grid .grid-heading-row .static-area, .form-grid .grid-heading-row .grid-static-col *, .form-grid .grid-heading-row .reqd::after { color: #fff !important; }
+.form-grid .grid-heading-row input[type="checkbox"] { accent-color: #fff; }
+
+/* report / datatable headers (query reports, report view) */
+.datatable .dt-header, .datatable .dt-header .dt-row, .datatable .dt-cell--header, .datatable .dt-cell--header .dt-cell__content,
+.datatable .dt-header .dt-cell { background: #1479b3 !important; color: #fff !important; }
+.datatable .dt-cell--header .dt-dropdown__toggle svg, .datatable .dt-cell--header svg { stroke: #fff; }
+.report-wrapper .dt-cell--header .dt-cell__content { color: #fff !important; }
+
+/* list view header: solid blue to match */
+.list-row-head, .list-row-head .level, .frappe-list .list-row-head { background: #1479b3 !important; border-bottom: 0 !important; border-radius: 8px 8px 0 0; }
+.list-row-head .list-row-col, .list-row-head .level-item, .list-row-head .list-subject, .list-row-head span, .list-row-head .list-count,
+.list-row-head .list-row-col .ellipsis, .list-row-head a { color: #fff !important; }
+.list-row-head svg { stroke: #fff; }
+.list-row-head input[type="checkbox"] { accent-color: #fff; }
+
+/* form tab strip: keep it below the page title bar, never under it */
+.form-tabs-list {
+  position: sticky; top: calc(var(--bk-topbar-h) + var(--page-head-height, 52px)) !important; z-index: 5 !important;
+  background: var(--brand-gradient) !important; margin: 0 0 8px; border-radius: 0 0 10px 10px; display: block !important;
+}
+.form-tabs-list .form-tabs { border-bottom: 0 !important; }
+.form-tabs-list .form-tabs .nav-item .nav-link.active { margin-top: 0; border-radius: 8px; margin: 6px 2px; padding: 8px 14px; }
+.form-tabs-list .form-tabs .nav-item .nav-link { padding: 14px 14px; }
+
+/* table headers inside HTML/markdown fields and dashboards */
+.form-page table thead th, .frappe-card table thead th, .table thead th { background: #1479b3 !important; color: #fff !important; border-color: #1479b3 !important; }
