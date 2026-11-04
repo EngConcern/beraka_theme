@@ -56,6 +56,14 @@ body, .page-container { background: #f4f8fb; }
 /* ---------- buttons, links, inputs ---------- */
 .btn-primary { background: var(--brand-gradient) !important; border-color: var(--brand-700) !important; }
 .btn-primary:hover { filter: brightness(1.08); }
+.btn-default, .btn-secondary, .btn-light, .btn-xs, .btn-sm:not(.btn-primary):not(.btn-danger), .page-actions .btn:not(.btn-primary):not(.btn-danger),
+.custom-actions .btn, .menu-btn-group .btn, .actions-btn-group .btn, .filter-selector .btn, .sort-selector .btn, .page-icon-group .btn, .btn.icon-btn {
+  background: var(--brand-500) !important; color: #fff !important; border-color: var(--brand-500) !important;
+}
+.btn-default:hover, .btn-secondary:hover, .btn-light:hover, .page-actions .btn:not(.btn-primary):hover { background: var(--brand-700) !important; border-color: var(--brand-700) !important; }
+.btn-default svg, .btn-secondary svg, .btn-light svg, .page-actions .btn svg, .btn.icon-btn svg { stroke: #fff; fill: none; }
+.btn-default .icon use, .btn-secondary .icon use { stroke: #fff; }
+.btn-danger { background: #c0392b !important; border-color: #c0392b !important; }
 a, .text-primary { color: var(--brand-500); }
 .form-control:focus { border-color: var(--brand-500); box-shadow: 0 0 0 2px rgba(42, 154, 214, .25); }
 .indicator-pill.blue, .indicator-pill.purple { background: var(--brand-100); color: var(--brand-700); }
@@ -67,7 +75,7 @@ a, .text-primary { color: var(--brand-500); }
 /* =====================================================================
    Beraka shell: Havano-style module menu + top bar (driven by beraka_theme.js)
    ===================================================================== */
-:root { --bk-topbar-h: 56px; --sidebar-width: 240px; }
+:root { --bk-topbar-h: 56px; --navbar-height: 56px; --sidebar-width: 250px; }
 
 /* dock rail gone; native search/notification band and footer user block hidden */
 #desk-dock, .dock, .standard-items-band, .body-sidebar-bottom .dropdown-navbar-user,
@@ -100,7 +108,7 @@ a, .text-primary { color: var(--brand-500); }
 body.bk-shell .body-sidebar-container { top: var(--bk-topbar-h); height: calc(100vh - var(--bk-topbar-h)); }
 body.bk-shell .body-sidebar { padding-top: 6px; }
 body.bk-shell .sticky-top, body.bk-shell .page-head { top: var(--bk-topbar-h); }
-body.bk-shell .main-section, body.bk-shell #body { padding-top: var(--bk-topbar-h); }
+body.bk-shell .navbar:not(.bk-topbar) { display: none !important; }
 
 /* sidebar header shows just the module name, no app switcher */
 body.bk-shell .sidebar-header { padding: 12px 14px 4px; }
@@ -129,3 +137,21 @@ body.bk-shell .sidebar-header .header-title { color: #fff; font-weight: 700; let
 .bk-module-items .section-break .sidebar-item-label { color: rgba(255, 255, 255, .6); font-size: 11px; text-transform: uppercase; }
 .bk-module-items .active-sidebar > .item-anchor,
 .bk-module-items .active-sidebar .standard-sidebar-item { background: rgba(255, 255, 255, .18); border-radius: 8px; }
+
+/* native sidebar rows are replaced by the Beraka module tree */
+.sidebar-items > :not(.bk-modules) { display: none !important; }
+.bk-modules { padding-top: 6px; }
+.bk-module .bk-module-items { display: none; }
+.bk-module.open .bk-module-items { display: block; }
+.bk-module.open .bk-module-caret { transform: rotate(180deg); }
+.bk-module-caret { transform: rotate(0); }
+.bk-module.active { background: transparent; }
+.bk-module.active > .bk-module-anchor { background: rgba(255, 255, 255, .20); }
+.bk-module-items { margin: 2px 0 6px 12px; padding-left: 8px; border-left: 2px solid rgba(255, 255, 255, .18); }
+.bk-group { font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255, 255, 255, .55); padding: 8px 8px 2px; }
+.bk-link { display: flex; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 7px; color: #d9ecf8 !important; font-size: 13px; text-decoration: none !important; }
+.bk-link.indent { padding-left: 22px; }
+.bk-link:hover { background: rgba(255, 255, 255, .10); color: #fff !important; }
+.bk-link.active { background: #fff; color: var(--brand-900) !important; font-weight: 600; }
+.bk-link-icon svg { width: 13px; height: 13px; stroke: currentColor; }
+.bk-home { margin-left: 4px; }
