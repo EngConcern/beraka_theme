@@ -6,6 +6,6 @@ app_email = "info@berakasoft.com"
 app_license = "MIT"
 
 # Loaded on every desk page after Frappe's own CSS, so our rules win.
-app_include_css = "/assets/beraka_theme/css/beraka_theme.css"
+app_include_css = "beraka_theme.bundle.css"
 
-app_include_js = "/assets/beraka_theme/js/beraka_theme.js"
+app_include_js = "beraka_theme.bundle.js"

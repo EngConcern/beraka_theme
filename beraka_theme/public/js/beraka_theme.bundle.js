@@ -112,7 +112,7 @@
 		const ic = (n) => frappe.utils.icon(n, "sm", "", "", "current-color", true);
 		const $bar = $(
 			'<div class="bk-topbar">' +
-				'<a class="bk-topbar-brand" href="/desk"><img src="' + logo + '" alt="Beraka Soft"></a>' +
+				'<a class="bk-topbar-brand" href="/desk"><img src="' + logo + '" alt="Beraka Soft" style="height:30px;width:auto"></a>' +
 				'<button class="bk-topbar-search" type="button">' + ic("search") + "<span>" + __("Search") + "</span><kbd>Ctrl K</kbd></button>" +
 				'<div class="bk-topbar-actions">' +
 					'<button class="bk-topbar-btn bk-notify" type="button" title="' + __("Notifications") + '">' + ic("notification") + "</button>" +
