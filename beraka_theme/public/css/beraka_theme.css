@@ -63,3 +63,69 @@ a, .text-primary { color: var(--brand-500); }
 /* ---------- list view / headings ---------- */
 .page-head, .page-head .page-title .title-text { color: var(--brand-900); }
 .list-row-head { background: #eef5fa; }
+
+/* =====================================================================
+   Beraka shell: Havano-style module menu + top bar (driven by beraka_theme.js)
+   ===================================================================== */
+:root { --bk-topbar-h: 56px; --sidebar-width: 240px; }
+
+/* dock rail gone; native search/notification band and footer user block hidden */
+#desk-dock, .dock, .standard-items-band, .body-sidebar-bottom .dropdown-navbar-user,
+.sidebar-header .drop-icon, .sidebar-edge, .sidebar-collapse-arrow { display: none !important; }
+
+/* top bar */
+.bk-topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--bk-topbar-h); z-index: 1030;
+  display: flex; align-items: center; gap: 16px; padding: 0 20px;
+  background: var(--brand-gradient); box-shadow: 0 2px 10px rgba(11, 75, 115, .25);
+}
+.bk-topbar-brand img { height: 30px; background: #fff; border-radius: 8px; padding: 4px 10px; }
+.bk-topbar-search {
+  flex: 0 1 460px; margin: 0 auto; display: flex; align-items: center; gap: 10px;
+  height: 36px; padding: 0 14px; border: 0; border-radius: 10px; cursor: text;
+  background: rgba(255, 255, 255, .16); color: #fff; font-size: 13px;
+}
+.bk-topbar-search:hover { background: rgba(255, 255, 255, .24); }
+.bk-topbar-search kbd { margin-left: auto; font-size: 11px; opacity: .8; background: rgba(0, 0, 0, .2); padding: 2px 6px; border-radius: 4px; }
+.bk-topbar-actions { display: flex; align-items: center; gap: 6px; }
+.bk-topbar-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 10px;
+  border: 0; border-radius: 8px; background: transparent; color: #fff; font-size: 13px; cursor: pointer;
+}
+.bk-topbar-btn:hover { background: rgba(255, 255, 255, .18); }
+.bk-topbar-btn svg, .bk-topbar-search svg { stroke: #fff; fill: none; }
+.bk-topbar-avatar { margin-left: 6px; }
+
+/* push desk content and sidebar below the top bar */
+body.bk-shell .body-sidebar-container { top: var(--bk-topbar-h); height: calc(100vh - var(--bk-topbar-h)); }
+body.bk-shell .body-sidebar { padding-top: 6px; }
+body.bk-shell .sticky-top, body.bk-shell .page-head { top: var(--bk-topbar-h); }
+body.bk-shell .main-section, body.bk-shell #body { padding-top: var(--bk-topbar-h); }
+
+/* sidebar header shows just the module name, no app switcher */
+body.bk-shell .sidebar-header { padding: 12px 14px 4px; }
+body.bk-shell .sidebar-header .header-title { color: #fff; font-weight: 700; letter-spacing: .2px; }
+
+/* module list */
+.bk-modules-title { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255, 255, 255, .55); padding: 10px 14px 4px; }
+.bk-module { margin: 2px 8px; border-radius: 10px; }
+.bk-module-anchor {
+  display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 10px;
+  color: #e6f2fa !important; font-weight: 600; font-size: 13.5px; text-decoration: none !important;
+}
+.bk-module-anchor:hover { background: rgba(255, 255, 255, .10); }
+.bk-module-icon { width: 18px; display: inline-flex; justify-content: center; }
+.bk-module-icon svg { width: 16px; height: 16px; stroke: currentColor; }
+.bk-dot { width: 8px; height: 8px; border-radius: 50%; background: #2a9ad6; display: inline-block; }
+.bk-module-caret { margin-left: auto; opacity: .7; transition: transform .15s; }
+.bk-module.collapsed .bk-module-caret { transform: rotate(-90deg); }
+.bk-module.active > .bk-module-anchor { background: rgba(255, 255, 255, .16); }
+.bk-module.active { background: rgba(0, 0, 0, .14); padding-bottom: 4px; }
+.bk-module.collapsed .bk-module-items { display: none; }
+
+/* the module's own links, nested under it */
+.bk-module-items { margin: 2px 0 0 10px; border-left: 2px solid rgba(255, 255, 255, .18); padding-left: 6px; }
+.bk-module-items .standard-sidebar-item .item-anchor { padding: 6px 8px; font-weight: 500; font-size: 13px; }
+.bk-module-items .section-break .sidebar-item-label { color: rgba(255, 255, 255, .6); font-size: 11px; text-transform: uppercase; }
+.bk-module-items .active-sidebar > .item-anchor,
+.bk-module-items .active-sidebar .standard-sidebar-item { background: rgba(255, 255, 255, .18); border-radius: 8px; }
