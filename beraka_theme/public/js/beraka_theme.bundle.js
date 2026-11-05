@@ -99,9 +99,16 @@
 	};
 
 	function render_modules(sidebar) {
-		const $items = sidebar.$sidebar; // .sidebar-items
-		if (!$items || !$items.length) return;
-		$items.find(".bk-modules").remove();
+		// Always render inside .sidebar-items, which lives in .body-sidebar-top, the panel's scroll box.
+		// On some v16 builds sidebar.$sidebar is the outer panel, and a tree placed there is clipped, not scrolled.
+		let $items = sidebar.$sidebar || $();
+		if (!$items.hasClass("sidebar-items")) {
+			const $in = $items.find(".sidebar-items").first();
+			$items = $in.length ? $in : $items.closest(".body-sidebar").find(".sidebar-items").first();
+		}
+		if (!$items.length) $items = $(".body-sidebar .sidebar-items").first();
+		if (!$items.length) return;
+		$(".bk-modules").remove();
 
 		const open = open_set();
 		if (sidebar.current_module) open.add(sidebar.current_module);

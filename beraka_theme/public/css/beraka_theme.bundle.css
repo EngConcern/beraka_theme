@@ -826,7 +826,8 @@ body.bk-shell .btn-default svg, body.bk-shell .btn-secondary svg, body.bk-shell 
 body.bk-shell .btn-default .icon use, body.bk-shell .btn-secondary .icon use { stroke: var(--bk-ink-2); }
 body.bk-shell .list-paging-area .btn-group .btn.btn-sm.btn-info { background: var(--bk-dark) !important; color: #fff !important; border-color: var(--bk-dark) !important; }
 body.bk-shell .btn-primary-light, body.bk-shell .btn-primary-light:hover { background: var(--bk-soft) !important; color: var(--bk-ink) !important; }
-body.bk-shell .filter-selector .btn .filter-icon, body.bk-shell .filter-selector .btn-default .badge { background: var(--bk-dark); color: #fff; }
+body.bk-shell .filter-selector .btn .filter-icon, body.bk-shell .filter-selector .btn svg, body.bk-shell .filter-x-button svg { background: transparent; stroke: var(--bk-ink-2); }
+body.bk-shell .filter-selector .btn .badge, body.bk-shell .filter-selector .filter-count { background: var(--bk-dark); color: #fff; border-radius: 10px; }
 
 /* headers that were blue: list, child table, report and plain tables go light grey with dark text */
 body.bk-shell .list-row-head, body.bk-shell .list-row-head .level, body.bk-shell .frappe-list .list-row-head { background: var(--bk-soft) !important; border-bottom: 1px solid var(--bk-line) !important; }
