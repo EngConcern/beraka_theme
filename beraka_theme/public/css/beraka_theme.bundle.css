@@ -616,3 +616,116 @@ body.bk-shell .point-of-sale-app > section { background: #ffffff; border-radius:
 .point-of-sale-app .past-order-summary .summary-btns .btn { border-radius: 10px; height: 44px; font-weight: 700; }
 .point-of-sale-app .past-order-list .invoice-wrapper { border-radius: 10px; border: 1px solid #e3edf4; margin-bottom: 8px; }
 .point-of-sale-app .past-order-list .invoice-wrapper:hover { background: #f4f8fb; }
+
+/* =====================================================================
+   Layout pass 3 (2026-11-05): scrolling sidebar, B-Logistics-style content width, sectioned form cards
+   ===================================================================== */
+
+/* --- sidebar: the panel clips its corners, the item list inside is the scroll box --- */
+body.bk-shell .body-sidebar-container { overflow: visible; }
+body.bk-shell .body-sidebar {
+  display: flex !important; flex-direction: column; height: 100% !important; max-height: 100%; overflow: hidden;
+}
+body.bk-shell .body-sidebar-top {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto !important; overflow-x: hidden; overscroll-behavior: contain;
+  scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .25) transparent;
+}
+body.bk-shell .body-sidebar-top .sidebar-items, body.bk-shell .body-sidebar-top .bk-modules { overflow: visible; max-height: none; height: auto; }
+body.bk-shell .body-sidebar-bottom { flex: 0 0 auto; }
+body.bk-shell .bk-modules { padding-bottom: 24px; } /* last link never hides behind the rounded bottom edge */
+
+/* --- content area: fills the space right of the sidebar with an even gutter on both sides (same as the B-Logistics shell) --- */
+body.bk-shell { --bk-gutter: clamp(20px, 4.5vw, 84px); }
+body.bk-shell .page-head .page-head-content, body.bk-shell .page-body, body.bk-shell .page-content {
+  max-width: none !important; width: auto; margin: 0 !important; padding-left: var(--bk-gutter); padding-right: var(--bk-gutter);
+}
+body.bk-shell .page-head .page-head-content { padding-top: 14px; padding-bottom: 10px; }
+body.bk-shell .layout-main-section-wrapper { padding: 0; }
+body.bk-shell .page-head .page-title .title-text { font-size: 22px; }
+body.bk-shell .page-head .page-title .sub-heading, body.bk-shell .page-head .title-area .sub-heading { font-size: 13px; color: #5a7a92; }
+body.bk-shell .layout-main-section-wrapper .layout-main-section, body.bk-shell .frappe-list, body.bk-shell .report-wrapper, body.bk-shell .page-form { width: 100%; }
+@media (min-width: 1700px) { body.bk-shell { --bk-gutter: 96px; } }
+
+/* --- forms: each section is its own white card, the way the B-Logistics create screens group their inputs --- */
+body.bk-shell .form-page, body.bk-shell .form-layout .form-page, body.bk-shell .page-form.form-page {
+  background: transparent !important; box-shadow: none !important; border-radius: 0 !important; padding: 0 !important;
+}
+body.bk-shell .form-tabs-list {
+  background: #ffffff !important; border-radius: var(--bk-radius) !important; box-shadow: var(--bk-shadow); margin: 0 0 14px !important;
+  border-bottom: 0 !important; padding: 0 10px !important;
+}
+body.bk-shell .form-tabs-list .form-tabs .nav-item .nav-link { padding: 0 14px !important; }
+body.bk-shell .form-tab-content, body.bk-shell .form-tab-content .tab-pane { padding: 0; }
+body.bk-shell .form-section, body.bk-shell .form-section.card-section, body.bk-shell .form-dashboard-section {
+  background: #ffffff; border: 0 !important; border-radius: var(--bk-radius) !important; box-shadow: var(--bk-shadow);
+  margin: 0 0 14px !important; padding: 0 24px 10px !important;
+}
+body.bk-shell .form-section:not(:first-child) { border-top: 0 !important; }
+body.bk-shell .form-section.empty-section, body.bk-shell .form-section:not(.visible-section) { display: none; }
+body.bk-shell .form-section .section-head {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #0b4b73;
+  padding: 16px 0 12px; margin: 0 0 4px; border-bottom: 1px solid #eef3f8;
+}
+body.bk-shell .form-section .section-head .ml-2, body.bk-shell .form-section .section-head .collapse-indicator { margin-left: auto; }
+body.bk-shell .form-section .section-head.collapsed { border-bottom: 0; padding-bottom: 14px; }
+body.bk-shell .form-section .section-description { font-size: 12.5px; color: #5a7a92; margin: -2px 0 8px; }
+/* a section with no heading still gets breathing room at the top */
+body.bk-shell .form-section > .section-body:first-child { padding-top: 18px !important; }
+body.bk-shell .form-section .section-body { padding: 10px 0 8px !important; display: flex; flex-wrap: wrap; row-gap: 0; }
+body.bk-shell .form-section .form-column { padding: 0 12px; }
+body.bk-shell .form-section .form-column:first-child { padding-left: 0; }
+body.bk-shell .form-section .form-column:last-child { padding-right: 0; }
+body.bk-shell .form-group, body.bk-shell .frappe-control { margin-bottom: 16px; }
+body.bk-shell .control-label { font-size: 13px; font-weight: 500; color: #0b2a40; margin-bottom: 6px; }
+body.bk-shell .frappe-control .control-input .form-control, body.bk-shell .frappe-control input.form-control, body.bk-shell .frappe-control select.form-control,
+body.bk-shell .like-disabled-input { height: 40px; line-height: 38px; font-size: 14px; border-color: #d9e4ee !important; }
+body.bk-shell .frappe-control .control-input .form-control:hover { border-color: #b9cddd !important; }
+body.bk-shell .frappe-control .help-box { font-size: 12px; color: #6b8299; margin-top: 5px; }
+body.bk-shell .frappe-control textarea.form-control { min-height: 72px; }
+/* child tables (Legs / Lines) sit in the card with the same radius */
+body.bk-shell .frappe-control[data-fieldtype="Table"] .form-grid { border-radius: 10px; border-color: #e3edf4; }
+body.bk-shell .form-grid .grid-heading-row, body.bk-shell .form-grid .grid-heading-row .grid-row, body.bk-shell .form-grid .grid-heading-row .data-row,
+body.bk-shell .form-grid .grid-heading-row .grid-static-col, body.bk-shell .form-grid .grid-heading-row .row-index {
+  background: #f4f8fb !important; color: #5a7a92 !important; border-color: #e3edf4 !important; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700;
+}
+body.bk-shell .form-grid .grid-heading-row .static-area, body.bk-shell .form-grid .grid-heading-row .grid-static-col * { color: #5a7a92 !important; }
+body.bk-shell .form-grid .grid-heading-row svg { stroke: #5a7a92; }
+body.bk-shell .form-grid .grid-body .rows .grid-row:nth-child(even) { background: #fff; }
+body.bk-shell .form-grid .grid-body .rows .grid-row { border-bottom: 1px solid #eef3f8; }
+body.bk-shell .grid-footer .btn, body.bk-shell .grid-footer .grid-add-row { background: #fff !important; color: #0b4b73 !important; border: 1px solid #d9e4ee !important; }
+body.bk-shell .grid-footer .btn:hover, body.bk-shell .grid-footer .grid-add-row:hover { background: #f4f8fb !important; }
+/* form side panel and footer follow the card system */
+body.bk-shell .layout-side-section .form-sidebar { padding: 16px 18px; }
+body.bk-shell .form-footer { background: #ffffff; border-radius: var(--bk-radius); box-shadow: var(--bk-shadow); }
+body.bk-shell .form-message { border-radius: 10px; margin-bottom: 14px; }
+
+/* --- list view and reports share the same spacing --- */
+body.bk-shell .page-form { padding: 12px 16px; margin-bottom: 12px; border-radius: var(--bk-radius) !important; }
+body.bk-shell .frappe-list .result, body.bk-shell .frappe-list .list-row-head { border-radius: var(--bk-radius) var(--bk-radius) 0 0 !important; }
+body.bk-shell .frappe-list .list-row-container { margin: 0; border-radius: 0; }
+body.bk-shell .frappe-list .list-row-container:last-child { border-radius: 0 0 var(--bk-radius) var(--bk-radius); }
+
+@media (max-width: 991px) {
+  body.bk-shell { --bk-gutter: 14px; }
+  body.bk-shell .form-section, body.bk-shell .form-section.card-section { padding: 0 14px 8px !important; }
+}
+
+/* --- one content width for every page type: Frappe caps pages with --page-max-width and .container; both are lifted
+       so list, form, report, workspace, dashboard, POS and setup pages all end at the same gutter --- */
+html[data-theme] body.bk-shell, body.bk-shell { --page-max-width: none; }
+body.bk-shell .page-container .container, body.bk-shell .page-head .container, body.bk-shell .page-body.container,
+body.bk-shell .layout-main-section-wrapper, body.bk-shell .workspace-container, body.bk-shell .workspace,
+body.bk-shell .std-form-layout, body.bk-shell .form-layout, body.bk-shell .desk-page, body.bk-shell .page-content > .container,
+body.bk-shell .codex-editor, body.bk-shell .codex-editor__redactor, body.bk-shell .ce-block__content, body.bk-shell .ce-toolbar__content {
+  max-width: none !important; width: auto !important; margin-left: 0 !important; margin-right: 0 !important;
+}
+body.bk-shell .page-container .container, body.bk-shell .page-head .container { padding-left: var(--bk-gutter) !important; padding-right: var(--bk-gutter) !important; }
+body.bk-shell .page-body .container, body.bk-shell .page-body .layout-main-section-wrapper, body.bk-shell .page-body .layout-side-section { padding-left: 0 !important; padding-right: 0 !important; }
+body.bk-shell .page-head .page-head-content.container { padding-left: var(--bk-gutter) !important; padding-right: var(--bk-gutter) !important; }
+body.bk-shell.full-width .page-head .page-head-content, body.bk-shell.full-width .page-body { padding-left: var(--bk-gutter); padding-right: var(--bk-gutter); }
+/* Insights / Print Designer / setup wizard pages that render inside the desk frame */
+body.bk-shell .frappe-app-page, body.bk-shell .page-wrapper > .container { padding-left: var(--bk-gutter); padding-right: var(--bk-gutter); max-width: none; }
+/* keep the form side panel in the same band rather than hugging the far edge */
+body.bk-shell .page-body .row.layout-main { margin-left: 0; margin-right: 0; }
+body.bk-shell .page-body .layout-main-section-wrapper { padding-right: 16px !important; }
+body.bk-shell .page-body .layout-main-section-wrapper:last-child, body.bk-shell .page-body .layout-main-section-wrapper.col-md-12 { padding-right: 0 !important; }
