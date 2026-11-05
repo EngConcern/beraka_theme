@@ -130,6 +130,9 @@
 						return;
 					}
 					if (item.type !== "Link") return;
+					// Frappe caps a computed module menu at 15 doctypes and appends an "N more not shown"
+					// row that opens the DocType list. Not useful to an end user, so it is dropped.
+					if (item.link_type === "DocType" && item.link_to === "DocType" && item.filters) return;
 					const path = item_path(item, module);
 					if (!path) return;
 					const $a = $(
